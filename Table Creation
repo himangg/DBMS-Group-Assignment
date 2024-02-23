@@ -1,0 +1,100 @@
+-- Person Table
+CREATE TABLE Person (
+    PersonID INT PRIMARY KEY,
+    name VARCHAR(255),
+    Phone VARCHAR(20),
+    age INT,
+    email VARCHAR(255)
+);
+
+-- Candidate Table
+CREATE TABLE Candidate (
+    CandidateID INT PRIMARY KEY,
+    Prior_Exp VARCHAR(255),
+    PersonID INT,
+    FOREIGN KEY (PersonID) REFERENCES Person(PersonID)
+);
+
+-- Submission Table
+CREATE TABLE Submission (
+    SubmissionID INT PRIMARY KEY,
+    date DATE,
+    CandidateID INT,
+    FileType VARCHAR(255),
+    AdvertisementChannel VARCHAR(255),
+    FOREIGN KEY (CandidateID) REFERENCES Candidate(CandidateID)
+);
+
+-- SelectedCandidate Table
+CREATE TABLE SelectedCandidate (
+    CandidateID INT PRIMARY KEY,
+    Category VARCHAR(255),
+    FOREIGN KEY (CandidateID) REFERENCES Candidate(CandidateID)
+);
+
+-- Panelist Table
+CREATE TABLE Panelist (
+    PanelistID INT PRIMARY KEY,
+    IndustrialExperience VARCHAR(255),
+    PersonID INT,
+    FOREIGN KEY (PersonID) REFERENCES Person(PersonID)
+);
+
+-- MCM Director Table
+CREATE TABLE MCMDirector (
+    PersonID INT PRIMARY KEY,
+    FOREIGN KEY (PersonID) REFERENCES Person(PersonID)
+);
+
+-- GroupP Table
+CREATE TABLE GroupP (
+    GroupID INT PRIMARY KEY,
+    Category VARCHAR(255),
+    Genre VARCHAR(255)
+);
+
+-- Members Table
+CREATE TABLE Members (
+    CandidateID INT,
+    GroupID INT,
+    Role VARCHAR(255),
+    PRIMARY KEY (CandidateID, GroupID),
+    FOREIGN KEY (CandidateID) REFERENCES Candidate(CandidateID),
+    FOREIGN KEY (GroupID) REFERENCES GroupP(GroupID)
+);
+
+-- Album Table
+CREATE TABLE Album (
+    AlbumID INT PRIMARY KEY,
+    GroupID INT,
+    Name VARCHAR(255),
+    ReleaseDate DATE,
+    Price DECIMAL(10, 2),
+    FOREIGN KEY (GroupID) REFERENCES GroupP(GroupID)
+);
+
+-- Distributor Table
+CREATE TABLE Distributor (
+    DistributorID INT PRIMARY KEY,
+    Name VARCHAR(255)
+);
+
+-- Downloads Table
+CREATE TABLE Downloads (
+    AlbumID INT,
+    DistributorID INT,
+    date DATE,
+    status VARCHAR(255),
+    PRIMARY KEY (AlbumID, DistributorID),
+    FOREIGN KEY (AlbumID) REFERENCES Album(AlbumID),
+    FOREIGN KEY (DistributorID) REFERENCES Distributor(DistributorID)
+);
+
+-- Trailer Table
+CREATE TABLE Trailer (
+    TrailerID INT PRIMARY KEY,
+    AlbumID INT,
+    Approved BOOLEAN,
+    Time TIME,
+    FOREIGN KEY (AlbumID) REFERENCES Album(AlbumID)
+);
