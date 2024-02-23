@@ -1,17 +1,17 @@
---1.
+-- A
 
 SELECT AlbumID, Name, ReleaseDate
 FROM Album
 WHERE YEAR(ReleaseDate) = 2020;
 
---2.
+-- B
 
 SELECT CandidateID
 FROM Members
 GROUP BY CandidateID
 HAVING COUNT(DISTINCT GroupID) > 1;
 
---3.
+-- C
 
 SELECT M.CandidateID
 FROM Members M
@@ -19,14 +19,14 @@ JOIN GroupP G ON M.GroupID = G.GroupID AND G.Genre = 'Pop'
 GROUP BY M.CandidateID
 HAVING COUNT(DISTINCT M.GroupID) = 1;
 
---4.
+-- D
 
 SELECT DISTINCT s1.CandidateID
 FROM Submission s1
 JOIN Submission s2 ON s1.CandidateID = s2.CandidateID
 WHERE s1.FileType = 'Audio' AND s2.FileType = 'Video';
 
---5. 
+-- E
 
 SELECT AdvertisementChannel, COUNT(*) AS NumberOfSubmissions
 FROM Submission
