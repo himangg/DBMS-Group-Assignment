@@ -1,0 +1,82 @@
+-- Inserting data into Person
+INSERT INTO Person (PersonID, name, Phone, age, email) VALUES
+(1, 'John Doe', '555-1234', 30, 'johndoe@example.com'),
+(2, 'Jane Smith', '555-5678', 25, 'janesmith@example.com'),
+(3, 'Alice Johnson', '555-8765', 28, 'alicej@example.com'),
+(4, 'Chris Martin', '555-4321', 35, 'chrism@example.com'),
+(5, 'Emma Stone', '555-6789', 32, 'emmast@example.com');
+
+-- Inserting data into Candidate
+INSERT INTO Candidate (CandidateID, Prior_Exp, PersonID) VALUES
+(1, '5 years', 1),
+(2, '3 years', 2),
+(3, '7 years', 4),
+(4, '2 years', 5);
+
+-- Inserting data into Submission
+INSERT INTO Submission (SubmissionID, date, CandidateID, FileType, AdvertisementChannel) VALUES
+(1, '2024-02-22', 1, 'Audio', 'Social Media'),
+(2, '2024-02-23', 2, 'Video', 'Email Marketing'),
+(3, '2024-02-24', 3, 'Audio', 'TV'),
+(4, '2024-02-26', 1, 'Video', 'TV'),
+(5, '2024-02-25', 4, 'Video', 'Social Media');
+
+-- Inserting data into SelectedCandidate
+INSERT INTO SelectedCandidate (CandidateID, Category) VALUES
+(1, 'Engineering'),
+(2, 'Design'),
+(3, 'Management'),
+(4, 'Support');
+
+-- Inserting data into Panelist
+INSERT INTO Panelist (PanelistID, IndustrialExperience, PersonID) VALUES
+(1, '10 years', 3),
+(2, '15 years', 4);
+
+-- Inserting data into MCMDirector
+INSERT INTO MCMDirector (PersonID) VALUES
+(3),
+(5);
+
+-- Inserting data into GroupP
+INSERT INTO GroupP (GroupID, Category, Genre) VALUES
+(1, 'Music', 'Pop'),
+(2, 'Music', 'Rock'),
+(3, 'Music', 'Jazz'),
+(4, 'Music', 'Classical');
+
+-- Inserting data into Members
+INSERT INTO Members (CandidateID, GroupID, Role) VALUES
+(1, 1, 'Singer'),
+(2, 2, 'Guitarist'),
+(3, 3, 'Drummer'),
+(3, 4, 'Drummer'),
+(4, 4, 'Pianist');
+
+-- Inserting data into Album
+INSERT INTO Album (AlbumID, GroupID, Name, ReleaseDate, Price) VALUES
+(1, 1, 'Greatest Hits', '2024-05-01', 19.99),
+(2, 2, 'Rock Anthems', '2020-06-15', 14.99),
+(3, 3, 'Smooth Jazz Classics', '2024-07-20', 17.99),
+(4, 4, 'Classical Moods', '2020-08-18', 15.99);
+
+-- Inserting data into Distributor
+INSERT INTO Distributor (DistributorID, Name) VALUES
+(1, 'Global Music'),
+(2, 'RockNation'),
+(3, 'JazzWorld'),
+(4, 'ClassicTunes');
+
+-- Inserting data into Downloads
+INSERT INTO Downloads (AlbumID, DistributorID, date, status) VALUES
+(1, 1, '2024-02-24', 'completed'),
+(2, 2, '2024-02-25', 'pending'),
+(3, 3, '2024-02-26', 'completed'),
+(4, 4, '2024-02-27', 'failed');
+
+-- Inserting data into Trailer
+INSERT INTO Trailer (TrailerID, AlbumID, Approved, Time) VALUES
+(1, 1, TRUE, '00:01:30'),
+(2, 2, FALSE, '00:02:00'),
+(3, 3, TRUE, '00:01:45'),
+(4, 4, TRUE, '00:02:30');
